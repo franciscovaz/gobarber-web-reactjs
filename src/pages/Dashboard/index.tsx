@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { FiPower, FiClock } from 'react-icons/fi';
 import logoImg from '../../assets/logo.svg';
@@ -11,11 +11,15 @@ import {
   Content,
   Schedule,
   NextAppointment,
+  Appointment,
+  Section,
   Calendar,
 } from './styles';
 import { useAuth } from '../../hooks/auth';
 
 const Dashboard: React.FC = () => {
+  const [selectedDate, setSelectedDate] = useState(new Date());
+
   const { signOut, user } = useAuth();
   return (
     <Container>
@@ -62,6 +66,61 @@ const Dashboard: React.FC = () => {
               </span>
             </div>
           </NextAppointment>
+
+          <Section>
+            <strong>Manhã</strong>
+
+            <Appointment>
+              <span>
+                <FiClock />
+                08:00
+              </span>
+
+              <div>
+                <img
+                  src="https://avatars2.githubusercontent.com/u/27808014?s=460&u=cf949e2367d64368dee7273a81e2ff061956052e&v=4"
+                  alt="Francisco Vaz"
+                />
+
+                <strong>Francisco Vaz</strong>
+              </div>
+            </Appointment>
+            <Appointment>
+              <span>
+                <FiClock />
+                08:00
+              </span>
+
+              <div>
+                <img
+                  src="https://avatars2.githubusercontent.com/u/27808014?s=460&u=cf949e2367d64368dee7273a81e2ff061956052e&v=4"
+                  alt="Francisco Vaz"
+                />
+
+                <strong>Francisco Vaz</strong>
+              </div>
+            </Appointment>
+          </Section>
+
+          <Section>
+            <strong>Tarde</strong>
+
+            <Appointment>
+              <span>
+                <FiClock />
+                08:00
+              </span>
+
+              <div>
+                <img
+                  src="https://avatars2.githubusercontent.com/u/27808014?s=460&u=cf949e2367d64368dee7273a81e2ff061956052e&v=4"
+                  alt="Francisco Vaz"
+                />
+
+                <strong>Francisco Vaz</strong>
+              </div>
+            </Appointment>
+          </Section>
         </Schedule>
         <Calendar />
       </Content>
