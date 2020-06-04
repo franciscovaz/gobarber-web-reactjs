@@ -8,6 +8,7 @@
 
 <p align="center">
   <a href="#%EF%B8%8F-about-the-project">About the project</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-demo">Demo</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-preview">Preview</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-getting-started">Getting started</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
@@ -15,10 +16,6 @@
 </p>
 
 </br>
-
-<!-- <p align="center">
-  <img alt="Layout" src="">
-</p> -->
 
 ## 💇🏻‍♂️ About the project
 
@@ -29,11 +26,13 @@ This project is part of a complete application involving backend, frontend and m
 **Backend**, click here: [GoBarber Rest API](https://github.com/franciscovaz/gobarber-backend-nodejs)</br>
 **Mobile**: Comming soon
 
-## 📸 Preview
+## 📸 Demo
 
 ![GoBarber GIF](imgs/gobarber.gif)
 
 <br />
+
+## 📸 Preview
 
 ![image](imgs/login.png)
 ![image](imgs/login_toast.png)
