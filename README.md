@@ -28,6 +28,20 @@ This project is part of a complete application involving backend, frontend and m
 **Backend**, click here: [GoBarber Rest API](https://github.com/franciscovaz/gobarber-backend-nodejs)</br>
 **Mobile**: Comming soon
 
+## 📸 Preview
+
+![GoBarber GIF](imgs/gobarber.gif)
+
+<br />
+
+![image](imgs/login.png)
+![image](imgs/login_toast.png)
+![image](imgs/signup.png)
+![image](imgs/dashboard.png)
+![image](imgs/update_profile.png)
+![image](imgs/recover_password.png)
+![image](imgs/revover_input_error_msg.png)
+
 ## 🚀 Technologies
 
 - [ReactJS](https://reactjs.org/)
