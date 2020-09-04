@@ -3,7 +3,7 @@
 </h1>
 
 <h3 align="center">
-  ReactJS Application for GoBarber
+  ReactJS Application - GoBarber
 </h3>
 
 <p align="center">
