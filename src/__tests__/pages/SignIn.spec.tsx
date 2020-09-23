@@ -6,6 +6,7 @@ import SignIn from '../../pages/SignIn';
 jest.mock('react-router-dom', () => {
   return {
     useHistory: jest.fn(), // quando aparecer o useHistory eu chamo uma funcao vazia
+    Link: ({ children }: { children: React.ReactNode }) => children, // Tambem uso os Link que mostram o conteudo dos children (Ver Link em SignIn)
   };
 });
 
