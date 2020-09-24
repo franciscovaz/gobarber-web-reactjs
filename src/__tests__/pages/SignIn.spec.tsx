@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import SignIn from '../../pages/SignIn';
 
 // Todos os testes depois do mock ficam afetados por ele
@@ -12,8 +12,15 @@ jest.mock('react-router-dom', () => {
 
 describe('SignIn Page', () => {
   it('should be able to sign in', () => {
-    const { debug } = render(<SignIn />);
+    const { getByPlaceholderText, getByText } = render(<SignIn />);
 
-    debug();
+    const emailField = getByPlaceholderText('Email');
+    const passwordField = getByPlaceholderText('Senha');
+    const buttonElement = getByText('Entrar');
+
+    fireEvent.change(emailField, { target: { value: 'johndoe@example.com' } });
+    fireEvent.change(passwordField, { target: { value: '123456' } });
+
+    fireEvent.click(buttonElement);
   });
 });
