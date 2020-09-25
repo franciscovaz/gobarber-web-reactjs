@@ -3,6 +3,7 @@ import { fireEvent, render } from '@testing-library/react';
 import SignIn from '../../pages/SignIn';
 
 // Crio a funcao push fora para os testes terem acesso e verem se foi disparada
+// Todos os testes terao acesso a funco push
 const mockedHistoryPush = jest.fn();
 
 // Todos os testes depois do mock ficam afetados por ele
@@ -10,7 +11,7 @@ jest.mock('react-router-dom', () => {
   return {
     useHistory: () => ({
       push: mockedHistoryPush,
-    }), // quando aparecer o useHistory eu chamo uma funcao push
+    }), // quando aparecer o useHistory eu chamo uma funcao push, como no component
     Link: ({ children }: { children: React.ReactNode }) => children, // Tambem uso os Link que mostram o conteudo dos children (Ver Link em SignIn)
   };
 });
