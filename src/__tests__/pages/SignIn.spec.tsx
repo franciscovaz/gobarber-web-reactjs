@@ -2,11 +2,10 @@ import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import SignIn from '../../pages/SignIn';
 
+// Todos os testes terao acesso ao mock e à função push
 // Crio a funcao push fora para os testes terem acesso e verem se foi disparada
-// Todos os testes terao acesso a funco push
 const mockedHistoryPush = jest.fn();
 
-// Todos os testes depois do mock ficam afetados por ele
 jest.mock('react-router-dom', () => {
   return {
     useHistory: () => ({
