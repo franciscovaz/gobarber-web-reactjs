@@ -61,4 +61,44 @@ describe('SignIn Page', () => {
       expect(mockedHistoryPush).not.toHaveBeenCalled();
     });
   });
+  it('should display an error if login fails', async () => {
+    jest.mock('../../hooks/auth', () => {
+      return {
+        useAuth: () => ({
+          signIn: () => {
+            throw new Error();
+          },
+        }),
+      };
+    });
+
+    const mockedAddToast = jest.fn();
+
+    jest.mock('../../hooks/auth', () => {
+      return {
+        useToast: () => ({
+          addToast: mockedAddToast,
+        }),
+      };
+    });
+
+    const { getByPlaceholderText, getByText } = render(<SignIn />);
+
+    const emailField = getByPlaceholderText('Email');
+    const passwordField = getByPlaceholderText('Senha');
+
+    const buttonElement = getByText('Entrar');
+
+    fireEvent.change(emailField, {
+      target: { value: 'not-valid-credentials' },
+    });
+
+    fireEvent.change(passwordField, { target: { value: '123456' } });
+
+    fireEvent.click(buttonElement);
+
+    await wait(() => {
+      expect(mockedAddToast).toHaveBeenCalled();
+    });
+  });
 });
