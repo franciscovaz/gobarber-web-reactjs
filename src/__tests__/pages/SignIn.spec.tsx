@@ -58,7 +58,7 @@ describe('SignIn Page', () => {
     fireEvent.click(buttonElement);
 
     await wait(() => {
-      expect(mockedHistoryPush).not.toHaveBeenCalledWith('/dashboard');
+      expect(mockedHistoryPush).not.toHaveBeenCalled();
     });
   });
 });
