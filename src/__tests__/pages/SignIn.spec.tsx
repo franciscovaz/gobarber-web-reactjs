@@ -5,6 +5,8 @@ import SignIn from '../../pages/SignIn';
 // Todos os testes terao acesso ao mock e à função push
 // Crio a funcao push fora para os testes terem acesso e verem se foi disparada
 const mockedHistoryPush = jest.fn();
+const mockedSignIn = jest.fn();
+const mockedAddToast = jest.fn();
 
 jest.mock('react-router-dom', () => {
   return {
@@ -18,7 +20,15 @@ jest.mock('react-router-dom', () => {
 jest.mock('../../hooks/auth', () => {
   return {
     useAuth: () => ({
-      signIn: jest.fn(),
+      signIn: mockedSignIn,
+    }),
+  };
+});
+
+jest.mock('../../hooks/toast', () => {
+  return {
+    useToast: () => ({
+      addToast: mockedAddToast,
     }),
   };
 });
@@ -62,24 +72,8 @@ describe('SignIn Page', () => {
     });
   });
   it('should display an error if login fails', async () => {
-    jest.mock('../../hooks/auth', () => {
-      return {
-        useAuth: () => ({
-          signIn: () => {
-            throw new Error();
-          },
-        }),
-      };
-    });
-
-    const mockedAddToast = jest.fn();
-
-    jest.mock('../../hooks/auth', () => {
-      return {
-        useToast: () => ({
-          addToast: mockedAddToast,
-        }),
-      };
+    mockedSignIn.mockImplementation(() => {
+      throw new Error();
     });
 
     const { getByPlaceholderText, getByText } = render(<SignIn />);
@@ -90,7 +84,7 @@ describe('SignIn Page', () => {
     const buttonElement = getByText('Entrar');
 
     fireEvent.change(emailField, {
-      target: { value: 'not-valid-credentials' },
+      target: { value: 'johndoe@example.com' },
     });
 
     fireEvent.change(passwordField, { target: { value: '123456' } });
@@ -98,7 +92,11 @@ describe('SignIn Page', () => {
     fireEvent.click(buttonElement);
 
     await wait(() => {
-      expect(mockedAddToast).toHaveBeenCalled();
+      expect(mockedAddToast).toHaveBeenCalledWith(
+        expect.objectContaining({
+          type: 'error',
+        }),
+      );
     });
   });
 });
