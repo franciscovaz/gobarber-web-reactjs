@@ -94,7 +94,7 @@ describe('SignIn Page', () => {
     await wait(() => {
       expect(mockedAddToast).toHaveBeenCalledWith(
         expect.objectContaining({
-          type: 'error',
+          type: 'success',
         }),
       );
     });
