@@ -48,4 +48,23 @@ describe('Input component', () => {
       expect(containerElement).not.toHaveStyle('color: #ff9000;');
     });
   });
+
+  it('should keep input color when input filled', async () => {
+    const { getByPlaceholderText, getByTestId } = render(
+      <Input name="Email" placeholder="Email" />,
+    );
+
+    const inputElement = getByPlaceholderText('Email');
+    const containerElement = getByTestId('input-container');
+
+    fireEvent.change(inputElement, {
+      target: { value: 'johndoe@example.com' },
+    });
+
+    fireEvent.blur(inputElement);
+
+    await wait(() => {
+      expect(containerElement).toHaveStyle('color: #ff9000;');
+    });
+  });
 });
