@@ -7,6 +7,11 @@ describe('Auth hook', () => {
       wrapper: AuthProvider,
     });
 
-    console.log(result.current);
+    result.current.signIn({
+      email: 'johndoe@example.com',
+      password: '123456',
+    });
+
+    expect(result.current.user.email).toEqual('johndoe@example.com');
   });
 });
