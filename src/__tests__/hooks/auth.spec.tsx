@@ -99,4 +99,31 @@ describe('Auth hook', () => {
     expect(removeItemSpy).toHaveBeenCalledTimes(2);
     expect(result.current.user).toBeUndefined();
   });
+
+  it('should be able to update user info', () => {
+    const setItemSpy = jest.spyOn(Storage.prototype, 'setItem');
+
+    const { result } = renderHook(() => useAuth(), {
+      wrapper: AuthProvider,
+    });
+
+    const user = {
+      id: 'user-123',
+      name: 'John Doe',
+      email: 'johndoe@example.com',
+      avatar_url: 'image_avatar.jpg',
+    };
+
+    // Nao é async logo usa-se o act em vez do wait
+    act(() => {
+      result.current.updateUser(user);
+    });
+
+    expect(setItemSpy).toHaveBeenCalledWith(
+      '@GoBarber:user',
+      JSON.stringify(user),
+    );
+
+    expect(result.current.user).toEqual(user);
+  });
 });
